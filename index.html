@@ -3,16 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=yes"/>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <style>
         html {
             background: #f4f7f7;
         }
+
         body {
             margin: 0;
         }
+
         #mint-header {
-            background-color:#2d6cfb;
+            background-color: #2d6cfb;
             height: 40px;
             align-items: center;
             box-sizing: border-box;
@@ -37,7 +40,7 @@
             align: center;
         }
 
-        #back_btn{
+        #back_btn {
             height: 16px;
             width: 16px;
             margin-left: 8px;
@@ -45,8 +48,9 @@
         }
 
         #mint-body {
-            font-size: .8rem!important;
+            font-size: .8rem !important;
         }
+
         .mint-cell {
             border-top: 1px solid #eee;
             background: #fff;
@@ -58,6 +62,7 @@
             padding-right: 20px;
             box-sizing: border-box;
         }
+
         .mint-cell-title {
             text-align: center;
             font-weight: 500;
@@ -67,15 +72,18 @@
             padding-right: 55px;
             box-sizing: border-box;
         }
+
         .mint-cell-value {
             flex: 1;
             display: flex;
             justify-content: right;
             box-sizing: border-box;
         }
+
         .mint-cell-text {
             vertical-align: center;
         }
+
         .region {
             height: 36px;
             background-color: #f4f7f7;
@@ -91,11 +99,12 @@
             background-size: 100% auto;
             position: relative;
         }
+
         .file {
             position: relative;
             display: inline-block;
             background: #d0eeff;
-            border: 1px solid hsla(0,0%,68%,.1);
+            border: 1px solid hsla(0, 0%, 68%, .1);
             border-radius: 4px;
             overflow: hidden;
             color: #1e88c7;
@@ -105,140 +114,207 @@
             width: 100%;
             height: 90px;
         }
+
         .file_pos_img {
             width: 100%;
             height: 100%;
+        }
+
+        .v-modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: .5;
+            background: #000;
+        }
+
+        .mint-popup {
+            border-radius: 4px;
+            position: fixed;
+            background: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            backface-visibility: hidden;
+            transition: .2s ease-out;
+        }
+
+        img {
+            overflow-clip-margin: content-box;
+            overflow: clip;
+        }
+
+        .pinch-zoom-container {
+            width: 100% !important;
+            min-height: 280px !important;
+        }
+
+        .pinch-zoom, .pinch-zoom img {
+            width: 100%;
+            -webkit-user-drag: none;
+            -moz-user-drag: none;
+            -ms-user-drag: none;
+            user-drag: none;
         }
     </style>
     <title>通行证申请</title>
 </head>
 <body>
-    <div id="mint-header">
-        <img id="back_btn" src="./img/left_arrow.png" alt="">
-        <div id="title_container">
-            <h1 class="mint-header-title">审核结果</h1>
+<div id="mint-header">
+    <img id="back_btn" src="./img/left_arrow.png" alt="">
+    <div id="title_container">
+        <h1 class="mint-header-title">审核结果</h1>
+    </div>
+</div>
+<div style="height: 14px;background-color: #f4f7f7"></div>
+<div id="mint-body">
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">审核部门</span>
+        </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">合肥市交警支队</span>
         </div>
     </div>
-    <div style="height: 14px;background-color: #f4f7f7"></div>
-    <div id="mint-body">
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">审核部门</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">合肥市交警支队</span>
-            </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">审核时间</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">审核时间</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">2023-01-19 09:24:11</span>
-            </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">2023-01-19 09:24:11</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">审核状态</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text" style="color: red!important;">审核通过</span>
-            </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">审核状态</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">有效期始</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">2023-01-19</span>
-            </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text" style="color: red!important;">审核通过</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">有效期止</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">2023-12-31</span>
-            </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">有效期始</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">通行时间段</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text"></span>
-            </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">2023-01-19</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">通行路线</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text"></span>
-            </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">有效期止</span>
         </div>
-        <div style="width: 100%; height: 3px; background-color: rgb(187, 187, 187);"></div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">2023-12-31</span>
+        </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">通行时间段</span>
+        </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text"></span>
+        </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">通行路线</span>
+        </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text"></span>
+        </div>
+    </div>
+    <div style="width: 100%; height: 3px; background-color: rgb(187, 187, 187);"></div>
 
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">通行证名称</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">民生配送服务</span>
-            </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">通行证名称</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">申请人</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">合肥鲜生活冷链物流有限公司</span>
-            </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">民生配送服务</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">车牌号码</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">皖A810LA</span>
-            </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">申请人</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">号牌种类</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">小型汽车</span>
-            </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">安徽车优信息科技有限公司</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">车型</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">轻型厢式货车</span>
-            </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">车牌号码</span>
         </div>
-        <div class="mint-cell">
-            <div class="mint-cell-title"><!---->
-                <span class="mint-cell-text">通行证规定</span>
-            </div>
-            <div class="mint-cell-value">
-                <span class="mint-cell-text">1、每日6时至7，9时至17时，19时至23时，可驶入一环（含）以内道路通行；每日23时至次日6时,无需通行证即可通行。2、除总质量4.5吨（不含，以总质量为准）以下蓝牌箱式货车外，其余类型车辆禁止在高架桥和上跨式立交桥路面通行。3、确需在禁停路段停靠作业且周边没有停车场（位）的情况下，可在不影响交通的情况下，在路侧临时停车（驾驶人不得离开车辆），装卸货物。4、允许在上述通行时段内驶入四县一市禁限行道路。5、大、中型车辆仅允许有作业需求时在路内泊位临时停放，禁止无故在路内泊位长期停放。</span>
-            </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">皖A810LA</span>
         </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">号牌种类</span>
+        </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">小型汽车</span>
+        </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">车型</span>
+        </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">轻型厢式货车</span>
+        </div>
+    </div>
+    <div class="mint-cell">
+        <div class="mint-cell-title"><!---->
+            <span class="mint-cell-text">通行证规定</span>
+        </div>
+        <div class="mint-cell-value">
+            <span class="mint-cell-text">1、每日6时至7，9时至17时，19时至23时，可驶入一环（含）以内道路通行；每日23时至次日6时,无需通行证即可通行。2、除总质量4.5吨（不含，以总质量为准）以下蓝牌箱式货车外，其余类型车辆禁止在高架桥和上跨式立交桥路面通行。3、确需在禁停路段停靠作业且周边没有停车场（位）的情况下，可在不影响交通的情况下，在路侧临时停车（驾驶人不得离开车辆），装卸货物。4、允许在上述通行时段内驶入四县一市禁限行道路。5、大、中型车辆仅允许有作业需求时在路内泊位临时停放，禁止无故在路内泊位长期停放。</span>
+        </div>
+    </div>
 
-        <div class="region" style="">
-            通行证样式
-        </div>
+    <div class="region" style="">
+        通行证样式
+    </div>
 
-        <div style="background-color: white; display: flex; padding: 10px 20px; justify-content: left;">
-            <div style="position: relative; display: inline-block; width: 30%;">
-                <div class="file file_pic_img4" style="margin: 0px 15%;">
-                    <img src="./img/txz.jpg" class="file_pos_img">
+    <div style="background-color: white; display: flex; padding: 10px 20px; justify-content: left;">
+        <div style="position: relative; display: inline-block; width: 30%;">
+            <div class="file file_pic_img4" style="margin: 0px 15%;">
+                <img src="./img/txz.jpg" class="file_pos_img" onclick="showImg()">
+            </div>
+        </div>
+    </div>
+
+    <div id="image_container" style="width: 100%;height: 100%;display: none">
+        <div class="mint-popup mint-popup-center" style="z-index: 2003; min-width: 80%; background: transparent;">
+            <img src="./img/close.png?1a0bd277390507f1156977fdabd0d6ec"
+                 style="width: 30px; position: fixed; right: -2px; top: -2px; z-index: 99; border-radius: 50%; background: rgb(255, 255, 255); box-shadow: rgb(0, 0, 0) 0px 0px 10px;"
+                onclick="showImg()">
+            <div class="pinch-zoom-container" style="overflow: hidden; position: relative;">
+                <div class="pinch-zoom" style="width: 100%; transform-origin: 0% 0%; position: relative;">
+                    <img src="./img/txz.jpg">
                 </div>
             </div>
         </div>
+        <div class="v-modal" style="z-index: 2002;" onclick="showImg()"></div>
     </div>
+</div>
+
+<script>
+    window.onload = function(){
+    }
+    function showImg(){
+        let target = document.getElementById("image_container");
+        if (target.style.display == "none") {
+            target.style.display = "";
+        } else {
+            target.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
